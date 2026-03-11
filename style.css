@@ -1,0 +1,342 @@
+/* ==========================================
+   ワラビーくんの やることボード - スタイルシート
+   ========================================== */
+
+/* --- リセット & ベース --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --color-bg: #FFF8F0;
+    --color-primary: #4ECDC4;
+    --color-primary-dark: #3BA99F;
+    --color-accent: #FF6B6B;
+    --color-accent-warm: #FFE66D;
+    --color-text: #2C3E50;
+    --color-text-light: #7F8C8D;
+    --color-card-bg: #FFFFFF;
+    --color-card-done: #E8F8F5;
+    --color-card-border: #E0E0E0;
+    --color-check: #27AE60;
+    --color-shadow: rgba(0, 0, 0, 0.08);
+    --font-main: 'Zen Maru Gothic', sans-serif;
+    --radius: 16px;
+    --radius-sm: 12px;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+}
+
+/* --- ヘッダー --- */
+.app-header {
+    background: linear-gradient(135deg, var(--color-primary), #45B7AA);
+    color: white;
+    padding: 24px 20px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+}
+
+.header-character {
+    font-size: 36px;
+    margin-bottom: 4px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.app-title {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    height: 14px;
+    margin: 0 auto;
+    max-width: 280px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, var(--color-accent-warm), #FFD93D);
+    height: 100%;
+    border-radius: 20px;
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.progress-text {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 8px;
+    opacity: 0.9;
+}
+
+/* --- タスクカードリスト --- */
+.task-list {
+    padding: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* --- タスクカード --- */
+.task-card {
+    background: var(--color-card-bg);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    border: 2px solid var(--color-card-border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-card:active {
+    transform: scale(0.97);
+}
+
+.task-card.done {
+    background: var(--color-card-done);
+    border-color: var(--color-check);
+}
+
+.task-card.done .task-text {
+    color: var(--color-text-light);
+    text-decoration: line-through;
+    text-decoration-color: var(--color-check);
+    text-decoration-thickness: 2px;
+}
+
+.task-card.completing {
+    animation: cardComplete 0.5s ease;
+}
+
+@keyframes cardComplete {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.05); }
+    60% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* チェックボックス */
+.task-checkbox {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    border: 3px solid var(--color-card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.task-card.done .task-checkbox {
+    background: var(--color-check);
+    border-color: var(--color-check);
+    color: white;
+}
+
+/* タスクアイコン */
+.task-icon {
+    font-size: 36px;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* タスクテキスト */
+.task-text {
+    font-size: 20px;
+    font-weight: 700;
+    flex: 1;
+    transition: all 0.3s ease;
+    line-height: 1.4;
+}
+
+/* --- コアラさんの褒めポップアップ --- */
+.praise-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    border-radius: 24px;
+    padding: 24px 32px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    border: 3px solid var(--color-primary);
+}
+
+.praise-popup.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    animation: praiseIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes praiseIn {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+}
+
+.praise-character {
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.praise-text {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--color-primary-dark);
+}
+
+/* --- 全クリア演出 --- */
+.celebration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.celebration-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.celebration-content {
+    background: white;
+    border-radius: 28px;
+    padding: 36px 28px;
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    transform: scale(0.7);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.celebration-overlay.show .celebration-content {
+    transform: scale(1);
+}
+
+.celebration-character {
+    font-size: 64px;
+    margin-bottom: 12px;
+    animation: celebBounce 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes celebBounce {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-10px) scale(1.1); }
+}
+
+.celebration-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--color-primary-dark);
+    margin-bottom: 8px;
+}
+
+.celebration-message {
+    font-size: 18px;
+    color: var(--color-text-light);
+    margin-bottom: 16px;
+}
+
+.celebration-stars {
+    font-size: 32px;
+    margin-bottom: 20px;
+    animation: starSpin 1.5s ease-in-out infinite;
+}
+
+@keyframes starSpin {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.celebration-button {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 14px 40px;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: var(--font-main);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+    transition: transform 0.2s;
+}
+
+.celebration-button:active {
+    transform: scale(0.95);
+}
+
+/* --- 紙吹雪アニメーション --- */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    z-index: 250;
+    pointer-events: none;
+    animation: confettiFall 2s ease-in forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
