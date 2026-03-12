@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>おでかけの もちもの</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="app-header">
+        <div class="header-character"><img src="../images/waraby.png" alt="ワラビーくん" class="header-icon"></div>
+        <h1 class="app-title">おでかけの もちもの</h1>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">0 / 0 もったよ！</div>
+    </header>
+
+    <!-- タスクカードリスト -->
+    <main class="task-list" id="taskList">
+        <!-- JSで動的生成 -->
+    </main>
+
+    <!-- 全クリア演出 -->
+    <div class="celebration-overlay" id="celebrationOverlay">
+        <div class="celebration-content">
+            <div class="celebration-character">🎉</div>
+            <h2 class="celebration-title">ぜんぶ もったね！</h2>
+            <p class="celebration-message">じゅんび かんぺき！ いってらっしゃい！</p>
+            <div class="celebration-stars">⭐ ⭐ ⭐</div>
+            <button class="celebration-button" onclick="closeCelebration()">しゅっぱーつ！</button>
+        </div>
+    </div>
+
+    <!-- 褒め演出（チェック時） -->
+    <div class="praise-popup" id="praisePopup">
+        <div class="praise-character">🐨</div>
+        <div class="praise-text" id="praiseText">オッケー！</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
