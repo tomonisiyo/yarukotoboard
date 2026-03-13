@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ワラビーくんのアプリ 企画書</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            color: #2C3E50;
+            line-height: 1.8;
+            background: #f5f5f5;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 48px 56px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        }
+
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; padding: 0; max-width: 100%; }
+        }
+
+        /* --- ヘッダー --- */
+        .doc-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 3px solid #4ECDC4;
+        }
+
+        .doc-label {
+            display: inline-block;
+            background: #4ECDC4;
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .doc-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+
+        .doc-subtitle {
+            font-size: 16px;
+            color: #7F8C8D;
+            font-weight: 400;
+        }
+
+        /* --- セクション --- */
+        h2 {
+            font-size: 20px;
+            font-weight: 900;
+            color: #4ECDC4;
+            margin-top: 36px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E8F8F5;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        ul {
+            margin-bottom: 12px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        strong { color: #2C3E50; }
+
+        .highlight {
+            background: #E8F8F5;
+            border-left: 4px solid #4ECDC4;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        /* --- 特長ボックス --- */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .feature-box {
+            background: #FAFAFA;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+        }
+
+        .feature-num {
+            display: inline-block;
+            background: #4ECDC4;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: 900;
+            margin-right: 8px;
+        }
+
+        .feature-title {
+            font-size: 15px;
+            font-weight: 700;
+            display: inline;
+        }
+
+        .feature-desc {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        /* --- テーブル --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        th {
+            background: #4ECDC4;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        tr:nth-child(even) td {
+            background: #FAFAFA;
+        }
+
+        /* --- フッター --- */
+        .doc-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #E0E0E0;
+            text-align: center;
+            font-size: 12px;
+            color: #AAA;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- ヘッダー -->
+        <div class="doc-header">
+            <div class="doc-label">企画書</div>
+            <h1 class="doc-title">ワラビーくんのアプリ</h1>
+            <p class="doc-subtitle">— 発達障害のある方の「できた！」を応援するアプリ —</p>
+        </div>
+
+        <!-- このアプリについて -->
+        <h2>このアプリについて</h2>
+        <p>発達障害（自閉症・ダウン症・ADHDなど）のある方が、毎日の生活を「自分の力で」こなすための<strong>視覚支援アプリ</strong>です。</p>
+        <p>やるべきことや持ち物をイラスト付きのカードで一覧にし、一つずつチェックしていくだけのシンプルな設計。完了するとキャラクターが褒めてくれるので、小さな達成感を積み重ねることができます。</p>
+
+        <!-- 開発の背景 -->
+        <h2>開発の背景</h2>
+
+        <h3>現場で見えている課題</h3>
+        <p>開発者は、自閉症やダウン症の方の移動支援ヘルパーとして日々現場に立っています。その中で繰り返し目にする光景があります。</p>
+        <ul>
+            <li>保護者が紙に「帰ったらやること」を毎日手書きしている</li>
+            <li>利用者が持ち物を一つずつ数えて「5個あるから大丈夫」と確認している</li>
+            <li>忘れ物をしてパニックになってしまう</li>
+            <li>ヘルパーとの活動内容をLINEで一つずつ報告する保護者の負担</li>
+        </ul>
+
+        <div class="highlight">
+            これらは<strong>「見通しが立たない不安」</strong>から生まれています。<br>
+            何をすればいいか、何を持てばいいかが視覚的に分かるだけで、本人の安心感は大きく変わります。
+        </div>
+
+        <h3>既存アプリの課題</h3>
+        <ul>
+            <li><strong>高機能すぎて複雑</strong> — 設定に専門知識が必要</li>
+            <li><strong>UIが無機質</strong> — 機能的だが、使いたくなる楽しさがない</li>
+            <li><strong>価格が高い</strong> — 導入のハードルが高い</li>
+        </ul>
+
+        <!-- アプリの特長 -->
+        <h2>アプリの特長</h2>
+        <div class="features">
+            <div class="feature-box">
+                <span class="feature-num">1</span>
+                <span class="feature-title">誰でもすぐ使える、シンプルな設計</span>
+                <p class="feature-desc">複雑な設定は不要。開いて、タップして、チェックするだけ。利用者ご本人が一人でも操作できることを最優先に設計しています。文字はすべてひらがな・カタカナで表記しています。</p>
+            </div>
+            <div class="feature-box">
+                <span class="feature-num">2</span>
+                <span class="feature-title">キャラクターが「できた！」を一緒に喜んでくれる</span>
+                <p class="feature-desc">ウォーキングサークル「ワラビーズ」生まれのオリジナルキャラクターたちが、アプリの中で利用者を応援します。タスクを完了するたびに「できたね！」「バッチリ！」と声をかけてくれるので、一つひとつの行動が小さな成功体験になります。</p>
+            </div>
+            <div class="feature-box">
+                <span class="feature-num">3</span>
+                <span class="feature-title">ヘルパーの現場経験から生まれた設計</span>
+                <p class="feature-desc">教室や研究室ではなく、実際の支援現場から生まれたアプリです。利用者・保護者・ヘルパーの三者にとって使いやすい設計を目指しています。</p>
+            </div>
+        </div>
+
+        <!-- キャラクター紹介 -->
+        <h2>キャラクター紹介</h2>
+        <table>
+            <thead>
+                <tr><th>キャラクター</th><th>特徴</th><th>アプリでの役割</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>ワラビーくん</strong></td><td>おとなしくて想像力ゆたか</td><td>アプリの顔。一緒にがんばる仲間</td></tr>
+                <tr><td><strong>コアラさん</strong></td><td>元気いっぱい。おやつ大好き</td><td>褒め役。「できたね！」と応援</td></tr>
+                <tr><td><strong>カエルくん</strong></td><td>こだわりが強い。データ好き</td><td>記録や数字の表示を担当（将来）</td></tr>
+            </tbody>
+        </table>
+        <p>キャラクターたちは、実際の福祉活動の中で障害のある方々と一緒に育ってきた存在です。</p>
+
+        <!-- 現在の機能 -->
+        <h2>現在の機能（試作版）</h2>
+        <h3>やることボード</h3>
+        <p>日常生活の「やること」をイラスト付きカードで一覧表示。チェックすると達成演出。</p>
+        <h3>もちものチェック</h3>
+        <p>お出かけ前の持ち物を一つずつ確認できるチェックリスト。全部揃ったら「しゅっぱーつ！」</p>
+
+        <!-- 今後の展開 -->
+        <h2>今後の展開</h2>
+        <h3>近い将来</h3>
+        <ul>
+            <li>カードの追加・編集機能（保護者やヘルパーが利用者に合わせてカスタマイズ）</li>
+            <li>スケジュール・カレンダー機能</li>
+            <li>タイマー連動（「はみがき 3ぷん」など時間の見える化）</li>
+            <li>達成記録の蓄積（「きょうもぜんぶできたね！」の積み重ね）</li>
+        </ul>
+        <h3>将来的に</h3>
+        <ul>
+            <li>iOS / Android ネイティブアプリ化</li>
+            <li>イラストパックの追加（季節・場面ごとのカード素材）</li>
+            <li>ヘルパー・保護者向けの管理機能（カードの配信・共有）</li>
+            <li>ウォーキングイベント連携機能</li>
+        </ul>
+
+        <!-- 開発者について -->
+        <h2>開発者について</h2>
+        <p>ウォーキングサークル「ワラビーズ」主催。阪神間（神戸〜明石）を中心に、障害のある方・ヘルパー・保護者が共に歩くイベントを毎月開催しています。</p>
+        <p>ヘルパーとして現場に立ちながら、キャラクターデザイン・会報誌制作・アプリ開発までを手がけています。<strong>支援の現場を知る人間が、現場のために作るアプリ</strong>です。</p>
+
+        <!-- フッター -->
+        <div class="doc-footer">
+            ワラビーくんのアプリ 企画書 ｜ ウォーキングサークル ワラビーズ
+        </div>
+    </div>
+</body>
+</html>
